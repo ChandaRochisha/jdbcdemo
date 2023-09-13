@@ -29,37 +29,39 @@ import ch.qos.logback.core.net.SyslogOutputStream;
 public class JdbcdemoApplication 
 {
 
-	public static void main(String[] args) throws IdNotFoundException {
+	public static void main(String[] args) {
 	
 		
-		ApplicationContext applicationContext=SpringApplication.run(JdbcdemoApplication.class, args);
-     			
+		SpringApplication.run(JdbcdemoApplication.class, args);
+		System.out.println("hello");
+	} 
+}
 //		//DataSource datasource=applicationContext.getBean(DataSource.class);
-		AccountService accountService = applicationContext.getBean(AccountService.class);
+	//	AccountService accountService = applicationContext.getBean(AccountService.class);
 
-		Account account =new Account();
+	//	Account account =new Account();
 		//account.setAccountId("12345");
 
-  account.setAccountHolderName("Abhi");
+ // account.setAccountHolderName("Abhi");
 //
-       account.setAccountType("current");
+     //  account.setAccountType("current");
 //
-     account.setAccountStatus(true);
+  //   account.setAccountStatus(true);
 //
-      account.setAddress(" hyd");
+    //  account.setAddress(" hyd");
 //
 
-		account.setBalance(3456);
+	//	account.setBalance(3456);
 //
-   account.setContactNumber("5768789989");
-
-     // account.setAccountCreatedDate("89-09-09");
-
-    account.setDob(LocalDate.of(2019,04,01));
-		//account.setContactNumber("722782");
-		accountService.createAccount(account);
-	}
-}
+  // account.setContactNumber("5768789989");
+//
+//     // account.setAccountCreatedDate("89-09-09");
+//
+//    account.setDob(LocalDate.of(2019,04,01));
+//		//account.setContactNumber("722782");
+//		accountService.createAccount(account);
+//	}
+//}
 
 //		try {
 //
