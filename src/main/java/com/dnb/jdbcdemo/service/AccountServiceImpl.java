@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.dnb.jdbcdemo.dto.Account;
 import com.dnb.jdbcdemo.dto.Customer;
 import com.dnb.jdbcdemo.exceptions.IdNotFoundException;
+import com.dnb.jdbcdemo.exceptions.InvalidAccountIdException;
 //import com.dnb.jdbcdemo.exceptions.IdNotFoundException;
 import com.dnb.jdbcdemo.repo.AccountRepository;
 
@@ -59,6 +60,41 @@ public class AccountServiceImpl implements AccountService {
 		
 			
 	}
+
+
+	@Override
+	public boolean checkExistenceBy(String accountId) throws InvalidAccountIdException {
+		// TODO Auto-generated method stub
+		if(accountRepository.existsById(accountId)==true)
+		{
+			return true;
+			
+		}
+		else {
+		
+			
+		
+		
+		return false;
+		}
+	}
+
+
+	@Override
+	public List<Account> getAccountByContactNumber(String contactNumber) {
+		// TODO Auto-generated method stub
+		return accountRepository.findAccountByContactNumber(contactNumber);
+	}
+
+
+	
+
+
+
+//	public Optional<Account> getAccountByContactNum(String contactNumber) {
+//		// TODO Auto-generated method stub
+//		return Optional.empty();
+//	}
 
 
 	

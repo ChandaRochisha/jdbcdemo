@@ -54,6 +54,23 @@ public class CustomerServiceImpl implements CustomerService {
 
 	}
 
+	@Override
+	public boolean checkExistenceBy(String customerId) {
+		// TODO Auto-generated method stub
+		if(customerRepository.existsById(customerId)==true)
+		{
+			return true;
+			
+		}
+		else {
+		
+			
+		
+		
+		return false;
+		}
+	}
+
 
 
 }

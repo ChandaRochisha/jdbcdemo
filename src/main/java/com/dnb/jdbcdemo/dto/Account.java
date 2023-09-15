@@ -43,7 +43,7 @@ public class Account {
 	@Id
 	//@NotBlank(message= "account id should not be blank")//"" should not be empty as well
 	//these annotations work when we interact with the database
-//	@GeneratedValue(strategy=GenerationType.UUID)
+	//@GeneratedValue(strategy=GenerationType.UUID)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="account_seq")
 	
 	@GenericGenerator(name = "account_seq",strategy = "com.dnb.jdbcdemo.utils.DatePrefixedSequenceIdGenerator",
@@ -53,8 +53,8 @@ public class Account {
 					}
 					)
 	private String accountId;
-	//@Column(nullable =false)
-
+//	@Column(nullable =false)
+//   @NotBlank(message ="enter account holder name")
 	private String accountHolderName;
 	
 	private String accountType;

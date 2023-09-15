@@ -13,4 +13,5 @@ public interface CustomerService {
 	    public Optional<Customer> getCustomerById(int customerId);
 	    public List<Customer> getAllCustomers();
 	    public boolean deleteCustomer(String customerId) throws IdNotFoundException;
+		public boolean checkExistenceBy(String customerId);
 }
