@@ -1,9 +1,7 @@
 package com.dnb.jdbcdemo.controller;
 
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dnb.jdbcdemo.dto.Account;
 import com.dnb.jdbcdemo.exceptions.IdNotFoundException;
 import com.dnb.jdbcdemo.exceptions.InvalidAccountIdException;
-import com.dnb.jdbcdemo.exceptions.InvalidAccountTypeException;
 import com.dnb.jdbcdemo.exceptions.InvalidContactNumberException;
+import com.dnb.jdbcdemo.payload.request.AccountRequest;
 import com.dnb.jdbcdemo.service.AccountService;
+import com.dnb.jdbcdemo.utils.RequestToEntityMapper;
 
 import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/api/account")//common one
@@ -32,6 +32,8 @@ public class AccountController {
   
 	@Autowired
 	AccountService accountService;
+	@Autowired
+	RequestToEntityMapper mapper;
 	
 	@DeleteMapping("/{accountId}")
 
@@ -102,9 +104,10 @@ public class AccountController {
 	@PostMapping("/create")//url in HM
 	//it is combination of 2 things @requestmapping + post metho---> spriing 4.3.x
 	//http protocol ka post method
-	public ResponseEntity<?> createAccount(@Valid @RequestBody Account account ) { //method
+	public ResponseEntity<?> createAccount(@Valid @RequestBody AccountRequest account ) { 
+		Account account1= mapper.getAccountEntityObject(account);//method
 	   try {
-		Account account2= accountService.createAccount(account);
+		Account account2= accountService.createAccount(account1);
 		return new ResponseEntity(account2,HttpStatus.CREATED);
 		
 	} catch (IdNotFoundException e) {

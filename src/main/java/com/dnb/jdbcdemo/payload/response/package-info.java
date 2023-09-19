@@ -1,1 +1,0 @@
-package com.dnb.jdbcdemo.payload.response;

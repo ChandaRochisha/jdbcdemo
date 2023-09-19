@@ -26,6 +26,6 @@ public class AccountRequest {
 	private String address;
 	@NotNull(message = "Date should not be null")
 	private LocalDate dob;
-	@NotNull
+	@NotNull(message="Customer cannot be empty")
 	private int customerId;
 }

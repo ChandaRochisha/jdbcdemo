@@ -19,10 +19,25 @@ public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	private AccountRepository accountRepository;
+
+	@Autowired
+	private CustomerRepository customerRepository;
+	
+	
 	@Override
-	public Account createAccount(Account account)  {
+	public Account createAccount(Account account) throws IdNotFoundException  {
 		// TODO Auto-generated method stub
-	return	accountRepository.save(account);
+		Optional<Customer> customer = customerRepository.findById(account.getCustomer().getCustomerId());
+		
+		if(customer.isPresent())
+		{account.setCustomer(customer.get());
+			return	accountRepository.save(account);
+	}else {
+		customer.orElseThrow(()->new IdNotFoundException("customer id is not valid one"));
+		
+	}
+//	return null;
+		return account;
 		
 	}
 	
@@ -65,7 +80,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public boolean checkExistenceBy(String accountId) throws InvalidAccountIdException {
 		// TODO Auto-generated method stub
-		if(accountRepository.existsById(accountId)==true)
+		if(accountRepository.existsById(accountId))
 		{
 			return true;
 			

@@ -16,7 +16,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	
 	@Autowired
-	private CustomerRepository customerRepository;
+ CustomerRepository customerRepository;
 	
 	@Override
 	public Customer createCustomer(Customer customer) {
@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Optional<Customer> getCustomerById(int customerId) {
 		// TODO Auto-generated method stub
-		return customerRepository.findById(String.valueOf(customerId));
+		return customerRepository.findById(customerId);
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 	@Override
-	public boolean deleteCustomer(String customerId) throws IdNotFoundException {
+	public boolean deleteCustomer(int customerId) throws IdNotFoundException {
 		// TODO Auto-generated method stub
 		if(customerRepository.existsById(customerId)==true)
 		{
@@ -55,9 +55,9 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public boolean checkExistenceBy(String customerId) {
+	public boolean checkExistenceBy(int customerId) {
 		// TODO Auto-generated method stub
-		if(customerRepository.existsById(customerId)==true)
+		if(customerRepository.existsById(customerId))
 		{
 			return true;
 			
