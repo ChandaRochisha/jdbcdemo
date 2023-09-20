@@ -66,12 +66,13 @@ public class Account {
 	
 	private boolean accountStatus;
 
-	@ManyToOne(cascade =CascadeType.ALL, fetch =FetchType.LAZY)
+	@ManyToOne(fetch =FetchType.LAZY,cascade =CascadeType.ALL )
 	//joincolumn help to handle relationship
 
 	@JoinColumn(name="customer_id", referencedColumnName="customerId")
-	@JsonIgnoreProperties({"application","hibernateLazyInitializer"})
-  //@JsonIgnoreProperties("accountList")
+	//@JsonIgnoreProperties({"application","hibernateLazyInitializer"})
+	//@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+ // @JsonIgnoreProperties("accountList")
 	//@JsonIgnore
 	private Customer customer;
 

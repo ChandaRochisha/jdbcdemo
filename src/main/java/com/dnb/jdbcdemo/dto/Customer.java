@@ -49,11 +49,11 @@ public class Customer {
 	
 	
 	//one customer can have multiple accounts.
-	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="customer")
+	//@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="customer")
 	//mapped by -->child
-	//@JsonIgnoreProperties("account")
-	@JsonIgnore
-	private List<Account> accountList = new ArrayList<>();
+	//@JsonIgnoreProperties("customer")
+	//@JsonIgnore
+	//private List<Account> accountList = new ArrayList<>();
 	
 	
 
